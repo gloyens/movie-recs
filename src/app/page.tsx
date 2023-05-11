@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import askOpenAI from "./config";
+import askOpenAI from "./api/generateAnswer";
 
 export default function Home() {
   return (

@@ -1,9 +1,8 @@
 import { Configuration, OpenAIApi } from "openai";
 
-//TODO: get apiKey working
+// TODO: put OPENAI_API_KEY into vercel .env
 const configuration = new Configuration({
-  apiKey: "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",
-  // apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);

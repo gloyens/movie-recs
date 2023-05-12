@@ -1,13 +1,13 @@
 import { Container } from "./styles";
-import askOpenAI from "./api/generateAnswer";
+import OpenAI from "./components/OpenAI";
+import Form from "./components/Form";
 
 export default function Home() {
-  const prompt = "How do I make a waldorf salad?";
-
   return (
     <Container>
       <h1>Hello world</h1>
-      <p>{askOpenAI(prompt)}</p>
+      <OpenAI />
+      <Form />
     </Container>
   );
 }

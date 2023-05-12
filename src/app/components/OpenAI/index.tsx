@@ -8,13 +8,15 @@ import askOpenAI from "@/app/api/generateAnswer";
 export default function OpenAI() {
   const { prompt } = useAppContext();
   const [response, setResponse] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Only change the display when the prompt changes
   // Removing the useEffect will cause the component to re-render repeatedly
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const result = await askOpenAI(prompt);
       setResponse(result);
+      setIsLoading(false);
     };
 
     fetchData();
@@ -24,7 +26,7 @@ export default function OpenAI() {
     <p>
       <strong>{prompt}</strong>
       <br />
-      {response}
+      {isLoading ? "Generating..." : response}
     </p>
   );
 }

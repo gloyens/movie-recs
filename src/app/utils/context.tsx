@@ -14,7 +14,7 @@ interface ContextProps {
 const AppContext = createContext<ContextProps>({} as ContextProps);
 
 const AppContextProvider = ({ children }: { children?: React.ReactNode }) => {
-  const [prompt, setPrompt] = useState("How do you make a Waldorf salad?");
+  const [prompt, setPrompt] = useState("");
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
   return (

@@ -9,7 +9,7 @@ const openai = new OpenAIApi(configuration);
 
 export const makeRequest = async (
   messages: ChatCompletionRequestMessage[],
-  temperature = 0.5
+  temperature = 0.6
 ) => {
   if (!configuration.apiKey) {
     throw new Error(
@@ -20,16 +20,6 @@ export const makeRequest = async (
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: messages,
-    // messages: [
-    //   {
-    //     role: "system",
-    //     content: system,
-    //   },
-    //   {
-    //     role: "user",
-    //     content: user,
-    //   },
-    // ],
     temperature,
   });
 

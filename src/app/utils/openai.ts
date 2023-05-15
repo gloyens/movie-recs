@@ -1,4 +1,4 @@
-import { Configuration, OpenAIApi } from "openai";
+import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai";
 
 // TODO: put OPENAI_API_KEY into vercel .env
 const configuration = new Configuration({
@@ -8,8 +8,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export const makeRequest = async (
-  system: string,
-  user: string,
+  messages: ChatCompletionRequestMessage[],
   temperature = 0.5
 ) => {
   if (!configuration.apiKey) {
@@ -20,16 +19,17 @@ export const makeRequest = async (
 
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
-    messages: [
-      {
-        role: "system",
-        content: system,
-      },
-      {
-        role: "user",
-        content: user,
-      },
-    ],
+    messages: messages,
+    // messages: [
+    //   {
+    //     role: "system",
+    //     content: system,
+    //   },
+    //   {
+    //     role: "user",
+    //     content: user,
+    //   },
+    // ],
     temperature,
   });
 

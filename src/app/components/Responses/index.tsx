@@ -7,6 +7,8 @@ import { ChatCompletionRequestMessage } from "openai";
 import { useAppContext } from "@/app/utils/context";
 import askOpenAI from "@/app/api/generateAnswer";
 
+import Questions from "../Questions";
+
 export default function Responses() {
   const { prompt, messages, setMessages } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
@@ -49,16 +51,7 @@ export default function Responses() {
   return (
     <div>
       {"question" in messageObject ? (
-        <>
-          <h2>{messageObject["question"]}</h2>
-          <ul>
-            {messageObject["answers"].map(
-              (answer: string, index: Key | null | undefined) => (
-                <li key={index}>{answer}</li>
-              )
-            )}
-          </ul>
-        </>
+        <Questions messageObject={messageObject} />
       ) : (
         <ul>
           {messageObject["recommendations"].map(

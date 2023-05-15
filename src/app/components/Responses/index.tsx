@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 
 import { ChatCompletionRequestMessage } from "openai";
 
@@ -28,15 +28,54 @@ export default function Responses() {
     fetchData();
   }, [prompt]);
 
-  const displayedMessage = isLoading
+  const lastMessage = isLoading
     ? messages[messages.length - 2]?.content
     : messages[messages.length - 1]?.content;
 
+  console.log(lastMessage);
+
+  let messageObject;
+
+  try {
+    messageObject = JSON.parse(lastMessage);
+  } catch (error) {
+    // Parsing failed, use a default option
+    messageObject = {
+      question: "Parsing failed",
+      answers: [],
+    };
+  }
+
   return (
     <div>
-      <p>{displayedMessage}</p>
+      {"question" in messageObject ? (
+        <>
+          <h2>{messageObject["question"]}</h2>
+          <ul>
+            {messageObject["answers"].map(
+              (answer: string, index: Key | null | undefined) => (
+                <li key={index}>{answer}</li>
+              )
+            )}
+          </ul>
+        </>
+      ) : (
+        <ul>
+          {messageObject["recommendations"].map(
+            (
+              recommendation: { title: string; description: string },
+              index: Key | null | undefined
+            ) => (
+              <li key={index}>
+                <h3>{recommendation.title}</h3>
+                <p>{recommendation.description}</p>
+              </li>
+            )
+          )}
+        </ul>
+      )}
 
-      {isLoading ? prompt : ""}
+      {isLoading ? "Loading..." : ""}
     </div>
   );
 }

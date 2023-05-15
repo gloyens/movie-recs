@@ -1,18 +1,28 @@
 "use client";
 
+import { ChatCompletionRequestMessage } from "openai";
+
 import { useAppContext } from "@/app/utils/context";
 
 export default function Form() {
-  const { setPrompt } = useAppContext();
+  const { setPrompt, messages, setMessages } = useAppContext();
 
   return (
     <form
       onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setPrompt(
+
+        const newPrompt =
           (e.currentTarget.elements.namedItem("prompt") as HTMLInputElement)
-            ?.value || ""
-        );
+            ?.value || "";
+
+        const newMessage: ChatCompletionRequestMessage = {
+          role: "user",
+          content: newPrompt,
+        };
+
+        setMessages([...messages, newMessage]);
+        setPrompt(newPrompt);
       }}
     >
       <input type="text" name="prompt" defaultValue="" />

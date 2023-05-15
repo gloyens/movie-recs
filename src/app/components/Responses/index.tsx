@@ -42,10 +42,9 @@ export default function Responses() {
   try {
     messageObject = JSON.parse(lastMessage);
   } catch (error) {
-    // Parsing failed, use a default option
-    console.error(error);
+    // console.error(error);
     messageObject = {
-      question: "Parsing failed",
+      question: "Loading...",
       answers: [],
     };
   }

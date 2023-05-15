@@ -29,7 +29,7 @@ export default function OpenAI() {
     };
 
     fetchData();
-    console.log(messages);
+    // console.log(messages);
   }, [prompt]);
 
   // Update messages array to include new response

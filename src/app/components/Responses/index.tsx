@@ -31,9 +31,9 @@ export default function Responses() {
     fetchData();
   }, [prompt]);
 
-  const lastMessage = isLoading
-    ? messages[messages.length - 2]?.content
-    : messages[messages.length - 1]?.content;
+  const lastMessage = messages[messages.length - 1]?.content;
+  // const regex = /{.*?}/im;
+  // const messageJSON = lastMessage.match(regex)?.[0] || "";
 
   console.log(lastMessage);
 
@@ -43,6 +43,7 @@ export default function Responses() {
     messageObject = JSON.parse(lastMessage);
   } catch (error) {
     // Parsing failed, use a default option
+    console.error(error);
     messageObject = {
       question: "Parsing failed",
       answers: [],

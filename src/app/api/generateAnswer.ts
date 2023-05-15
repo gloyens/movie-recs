@@ -23,7 +23,7 @@ const askOpenAI = async (messages: ChatCompletionRequestMessage[]) => {
     
     Imagine that these options will be shown as buttons, and adjust the copy of the options accordingly. You must be as concise as possible when asking questions, only showing the question and its options.
     
-    The final recommendations output must also be in JSON format, as shown below. Again, this is extremely important; NEVER offer any other format.
+    The final recommendations output must also be in JSON format, as shown below. Again, it is absolutely crucial that the response be in the exact JSON format shown below, without anything before or after. 
     
     {
       "recommendations": [

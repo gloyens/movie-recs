@@ -1,6 +1,8 @@
-import { uuid } from "uuidv4";
+import { v4 as uuid } from "uuid";
 
-import { QuestionsWrapper } from "./styles";
+import { useAppContext } from "@/app/utils/context";
+
+import { QuestionsWrapper, AnswersWrapper, Answer } from "./styles";
 
 interface Props {
   messageObject: {
@@ -8,16 +10,20 @@ interface Props {
     answers: string[];
   };
 }
-
+// setPrompt onClick
 export default function Questions({ messageObject }: Props) {
+  const { setPrompt } = useAppContext();
+
   return (
     <QuestionsWrapper>
       <h2>{messageObject["question"]}</h2>
-      <ul>
+      <AnswersWrapper>
         {messageObject["answers"].map((answer: string) => (
-          <li key={uuid()}>{answer}</li>
+          <li key={uuid()}>
+            <Answer onClick={() => setPrompt(answer)}>{answer}</Answer>
+          </li>
         ))}
-      </ul>
+      </AnswersWrapper>
     </QuestionsWrapper>
   );
 }

@@ -1,12 +1,13 @@
 "use client";
 
-import { Key, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ChatCompletionRequestMessage } from "openai";
 
 import { useAppContext } from "@/app/utils/context";
 import askOpenAI from "@/app/api/generateAnswer";
 
+import Recommendations from "../Recommendations";
 import Questions from "../Questions";
 
 export default function Responses() {
@@ -53,19 +54,7 @@ export default function Responses() {
       {"question" in messageObject ? (
         <Questions messageObject={messageObject} />
       ) : (
-        <ul>
-          {messageObject["recommendations"].map(
-            (
-              recommendation: { title: string; description: string },
-              index: Key | null | undefined
-            ) => (
-              <li key={index}>
-                <h3>{recommendation.title}</h3>
-                <p>{recommendation.description}</p>
-              </li>
-            )
-          )}
-        </ul>
+        <Recommendations messageObject={messageObject} />
       )}
 
       {isLoading ? "Loading..." : ""}

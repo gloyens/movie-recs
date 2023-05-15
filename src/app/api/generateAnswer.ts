@@ -20,8 +20,6 @@ const askOpenAI = async (messages: ChatCompletionRequestMessage[]) => {
 
   const conversation = [system, ...messages];
 
-  // console.log(conversation);
-  // return "hi";
   return await makeRequest(conversation);
 };
 

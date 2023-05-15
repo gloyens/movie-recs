@@ -34,9 +34,6 @@ export default function Responses() {
 
   return (
     <div>
-      {/* {messages.map((message, index) => (
-        <p key={index}>{message.content}</p>
-      ))} */}
       <p>{displayedMessage}</p>
 
       {isLoading ? prompt : ""}

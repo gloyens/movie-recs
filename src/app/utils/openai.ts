@@ -1,17 +1,22 @@
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai";
 
-// TODO: put OPENAI_API_KEY into vercel .env
-const configuration = new Configuration({
-  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
-});
+let openai: OpenAIApi | null = null;
 
-const openai = new OpenAIApi(configuration);
+export const initializeOpenAI = (apiKey: string) => {
+  const configuration = new Configuration({
+    apiKey: apiKey,
+  });
+
+  openai = new OpenAIApi(configuration);
+};
 
 export const makeRequest = async (
   messages: ChatCompletionRequestMessage[],
   temperature = 0.6
 ) => {
-  if (!configuration.apiKey) {
+  console.log("hi");
+
+  if (!openai) {
     throw new Error(
       "OpenAI API key not configured, please follow instructions in README.md"
     );

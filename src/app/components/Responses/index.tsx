@@ -20,7 +20,7 @@ export default function Responses() {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const result = await askOpenAI(messages);
+      const result = await askOpenAI(messages); //retry if it fails
 
       const newMessage: ChatCompletionRequestMessage = {
         role: "assistant",
@@ -52,7 +52,7 @@ export default function Responses() {
       answers: [],
     };
   }
-
+  
   return (
     <div>
       {"question" in messageObject ? (

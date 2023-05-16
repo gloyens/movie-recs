@@ -1,0 +1,22 @@
+div.Loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+ol.Answers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 1rem;
+}
+
+ol.Answers li {
+  color: white;
+}
+
+ol.Answers li::marker {
+  color: #c7300f;
+  font-weight: bold;
+}

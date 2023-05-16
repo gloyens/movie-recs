@@ -1,4 +1,5 @@
 import "./globals.css";
+import { fontClasses } from "./utils/fonts";
 import { AppContextProvider } from "./utils/context";
 
 export const metadata = {
@@ -14,7 +15,7 @@ export default function RootLayout({
   return (
     <AppContextProvider>
       <html lang="en">
-        <body>{children}</body>
+        <body className={fontClasses}>{children}</body>
       </html>
     </AppContextProvider>
   );

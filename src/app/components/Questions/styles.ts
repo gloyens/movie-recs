@@ -6,10 +6,23 @@ export const QuestionsWrapper = styled("div", {
   css: css.QuestionsWrapper,
 });
 
+export const Number = styled("span", {
+  css: css.Number,
+});
+
 export const AnswersWrapper = styled("ul", {
   css: css.AnswersWrapper,
 });
 
+export const AnswerWrapper = styled("li", {
+  css: css.AnswerWrapper,
+});
+
 export const Answer = styled("button", {
   css: css.Answer,
+  variants: {
+    disabled: {
+      true: css.DisabledAnswer,
+    },
+  },
 });

@@ -1,3 +1,13 @@
-div.RecommendationsWrapper {
-  color: blue;
+div.RecommendationsWrapper ul {
+  list-style: none;
+  padding: 0;
+}
+
+li.Recommendation h3 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+li.Recommendation p {
+  font-weight: 300;
 }

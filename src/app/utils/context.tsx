@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { SetStateAction, createContext, useContext, useState } from "react";
 
 import { ChatCompletionRequestMessage } from "openai";
 
@@ -9,6 +9,8 @@ interface ContextProps {
   setPrompt: (value: string) => void;
   messages: ChatCompletionRequestMessage[];
   setMessages: (value: ChatCompletionRequestMessage[]) => void;
+  answers: string[];
+  setAnswers: (value: SetStateAction<string[]>) => void;
 }
 
 const AppContext = createContext<ContextProps>({} as ContextProps);
@@ -16,6 +18,7 @@ const AppContext = createContext<ContextProps>({} as ContextProps);
 const AppContextProvider = ({ children }: { children?: React.ReactNode }) => {
   const [prompt, setPrompt] = useState("");
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
+  const [answers, setAnswers] = useState<string[]>([]);
 
   return (
     <AppContext.Provider
@@ -24,6 +27,8 @@ const AppContextProvider = ({ children }: { children?: React.ReactNode }) => {
         setPrompt,
         messages,
         setMessages,
+        answers,
+        setAnswers,
       }}
     >
       {children}

@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import { v4 as uuid } from "uuid";
+import { GridLoader } from "react-spinners";
 import { ChatCompletionRequestMessage } from "openai";
 
 import { useAppContext } from "@/app/utils/context";
@@ -9,9 +11,10 @@ import askOpenAI from "@/app/api/generateAnswer";
 
 import Recommendations from "../Recommendations";
 import Questions from "../Questions";
+import { Loading, Answers } from "./styles";
 
 export default function Responses() {
-  const { prompt, messages, setMessages } = useAppContext();
+  const { prompt, messages, setMessages, answers } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -32,8 +35,6 @@ export default function Responses() {
   }, [prompt]);
 
   const lastMessage = messages[messages.length - 1]?.content;
-  // const regex = /{.*?}/im;
-  // const messageJSON = lastMessage.match(regex)?.[0] || "";
 
   console.log(lastMessage);
 
@@ -42,10 +43,9 @@ export default function Responses() {
   try {
     messageObject = JSON.parse(lastMessage);
   } catch (error) {
-    // Parsing failed, use a default option
-    console.error(error);
+    // console.error(error);
     messageObject = {
-      question: "Parsing failed",
+      question: "Loading...",
       answers: [],
     };
   }
@@ -53,12 +53,27 @@ export default function Responses() {
   return (
     <div>
       {"question" in messageObject ? (
-        <Questions messageObject={messageObject} />
+        <Questions
+          messageObject={messageObject}
+          isLoading={isLoading}
+          number={messages.length}
+        />
       ) : (
         <Recommendations messageObject={messageObject} />
       )}
 
-      {isLoading ? "Loading..." : ""}
+      {isLoading ? (
+        <Loading>
+          <GridLoader color={"#fff"} size={12} />
+        </Loading>
+      ) : (
+        ""
+      )}
+      <Answers>
+        {answers.map((answer) => (
+          <li key={uuid()}>{answer}</li>
+        ))}
+      </Answers>
     </div>
   );
 }

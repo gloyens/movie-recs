@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import { ChatCompletionRequestMessage } from "openai";
 
 import { useAppContext } from "@/app/utils/context";
 
@@ -20,12 +21,19 @@ interface Props {
 }
 // setPrompt onClick
 export default function Questions({ messageObject, isLoading, number }: Props) {
-  const { setPrompt, answers, setAnswers } = useAppContext();
+  const { setPrompt, answers, setAnswers, messages, setMessages } =
+    useAppContext();
 
   const handleClick = (answer: string) => {
     setPrompt(answer);
+
+    const newMessage: ChatCompletionRequestMessage = {
+      role: "user",
+      content: answer,
+    };
+
+    setMessages([...messages, newMessage]);
     setAnswers([...answers, answer]);
-    console.log(answers);
   };
 
   return (

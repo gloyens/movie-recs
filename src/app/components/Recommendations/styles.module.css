@@ -11,3 +11,30 @@ li.Recommendation h3 {
 li.Recommendation p {
   font-weight: 300;
 }
+
+button.MoreButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 24px;
+  margin: 0;
+  width: 100%;
+
+  border: none;
+  border-radius: 4px;
+
+  font-size: 16px;
+  color: white;
+  text-transform: uppercase;
+
+  background-color: #df3611;
+  transition: 0.2s;
+}
+
+button.MoreButton:hover {
+  background-color: #c7300f;
+  color: white;
+
+  cursor: pointer;
+}

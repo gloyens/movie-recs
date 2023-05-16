@@ -1,6 +1,9 @@
 import { v4 as uuid } from "uuid";
+import { ChatCompletionRequestMessage } from "openai";
 
-import { RecommendationsWrapper, Recommendation } from "./styles";
+import { useAppContext } from "@/app/utils/context";
+
+import { RecommendationsWrapper, Recommendation, MoreButton } from "./styles";
 
 interface Recommendation {
   title: string;
@@ -14,6 +17,19 @@ interface Props {
 }
 
 export default function Recommendations({ messageObject }: Props) {
+  const { setPrompt, messages, setMessages } = useAppContext();
+
+  const handleClick = (request: string) => {
+    setPrompt(request);
+
+    const newMessage: ChatCompletionRequestMessage = {
+      role: "user",
+      content: request,
+    };
+
+    setMessages([...messages, newMessage]);
+  };
+
   return (
     <RecommendationsWrapper>
       <ul>
@@ -26,6 +42,15 @@ export default function Recommendations({ messageObject }: Props) {
           )
         )}
       </ul>
+      <MoreButton
+        onClick={() =>
+          handleClick(
+            "Please offer five more similar recommendations in the same JSON format."
+          )
+        }
+      >
+        More please!
+      </MoreButton>
     </RecommendationsWrapper>
   );
 }

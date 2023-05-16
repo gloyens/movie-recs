@@ -69,11 +69,15 @@ export default function Responses() {
       ) : (
         ""
       )}
-      <Answers>
-        {answers.map((answer) => (
-          <li key={uuid()}>{answer}</li>
-        ))}
-      </Answers>
+      {"question" in messageObject ? (
+        <Answers>
+          {answers.map((answer) => (
+            <li key={uuid()}>{answer}</li>
+          ))}
+        </Answers>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

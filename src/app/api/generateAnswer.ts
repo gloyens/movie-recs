@@ -23,6 +23,8 @@ const askOpenAI = async (messages: ChatCompletionRequestMessage[]) => {
     
     Imagine that these options will be shown as buttons, and adjust the copy of the options accordingly. You must be as concise as possible when asking questions, only showing the question and its options.
     
+    It is vitally important that the recommendations take my answers into account as much as possible. You should aim for each recommendation to reflect at least 80% of my answers.
+
     The final recommendations output must also be in JSON format, as shown below. Again, it is absolutely crucial that the response be in the exact JSON format shown below, without anything before or after. 
     
     {

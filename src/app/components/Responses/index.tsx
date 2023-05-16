@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+import { GridLoader } from "react-spinners";
 import { ChatCompletionRequestMessage } from "openai";
 
 import { useAppContext } from "@/app/utils/context";
@@ -9,6 +10,7 @@ import askOpenAI from "@/app/api/generateAnswer";
 
 import Recommendations from "../Recommendations";
 import Questions from "../Questions";
+import { Loading } from "./styles";
 
 export default function Responses() {
   const { prompt, messages, setMessages, answers } = useAppContext();
@@ -59,7 +61,13 @@ export default function Responses() {
         <Recommendations messageObject={messageObject} />
       )}
 
-      {isLoading ? "Loading..." : ""}
+      {isLoading ? (
+        <Loading>
+          <GridLoader color={"#fff"} size={12} />
+        </Loading>
+      ) : (
+        ""
+      )}
       <p>{answers}</p>
     </div>
   );

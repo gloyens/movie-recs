@@ -7,6 +7,8 @@ import { ChatCompletionRequestMessage } from "openai";
 interface ContextProps {
   prompt: string;
   setPrompt: (value: string) => void;
+  keyValue: string;
+  setKeyValue: (value: string) => void;
   messages: ChatCompletionRequestMessage[];
   setMessages: (value: ChatCompletionRequestMessage[]) => void;
   answers: string[];
@@ -17,6 +19,7 @@ const AppContext = createContext<ContextProps>({} as ContextProps);
 
 const AppContextProvider = ({ children }: { children?: React.ReactNode }) => {
   const [prompt, setPrompt] = useState("");
+  const [keyValue, setKeyValue] = useState("");
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
 
@@ -29,6 +32,8 @@ const AppContextProvider = ({ children }: { children?: React.ReactNode }) => {
         setMessages,
         answers,
         setAnswers,
+        keyValue,
+        setKeyValue,
       }}
     >
       {children}

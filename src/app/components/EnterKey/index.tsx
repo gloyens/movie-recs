@@ -3,14 +3,18 @@
 import { useState } from "react";
 import { FormWrapper, FormContent, Input, Submit } from "./styles";
 import { initializeOpenAI } from "@/app/utils/openai";
+import { useAppContext } from "@/app/utils/context";
 
 export default function EnterKey() {
   const [visible, setVisible] = useState(true);
-  const [keyValue, setKeyValue] = useState("");
+//   const [keyValue, setKeyValue] = useState("");
+  const { keyValue, setKeyValue } = useAppContext();
+  const [inputContent, setInputContent] = useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    initializeOpenAI(keyValue)
+    setKeyValue(inputContent);
+    initializeOpenAI(keyValue);
     setVisible(false);
   };
 
@@ -18,7 +22,7 @@ export default function EnterKey() {
     <FormWrapper visible={visible}>
       <FormContent onSubmit={handleSubmit}>
         <p>Please enter your API key:</p>
-        <Input type="text" onChange={(event) => setKeyValue(event.target.value)} />
+        <Input type="text" onChange={(event) => setInputContent(event.target.value)} />
         <Submit type="submit">Submit</Submit>
       </FormContent>
     </FormWrapper>

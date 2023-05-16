@@ -2,7 +2,7 @@ import { ChatCompletionRequestMessage } from "openai";
 
 import { makeRequest } from "../utils/openai";
 
-const askOpenAI = async (messages: ChatCompletionRequestMessage[]) => {
+const askOpenAI = async (messages: ChatCompletionRequestMessage[], keyValue: string) => {
   const system = <ChatCompletionRequestMessage>{
     role: "system",
     content: `You are now a movie recommendation bot known as MovieBot.
@@ -47,7 +47,7 @@ const askOpenAI = async (messages: ChatCompletionRequestMessage[]) => {
 
   const conversation = [system, ...messages];
 
-  return await makeRequest(conversation);
+  return await makeRequest(conversation, keyValue);
 };
 
 export default askOpenAI;

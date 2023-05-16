@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+import { v4 as uuid } from "uuid";
 import { GridLoader } from "react-spinners";
 import { ChatCompletionRequestMessage } from "openai";
 
@@ -10,7 +11,7 @@ import askOpenAI from "@/app/api/generateAnswer";
 
 import Recommendations from "../Recommendations";
 import Questions from "../Questions";
-import { Loading } from "./styles";
+import { Loading, Answers } from "./styles";
 
 export default function Responses() {
   const { prompt, messages, setMessages, answers } = useAppContext();
@@ -68,7 +69,11 @@ export default function Responses() {
       ) : (
         ""
       )}
-      <p>{answers}</p>
+      <Answers>
+        {answers.map((answer) => (
+          <li key={uuid()}>{answer}</li>
+        ))}
+      </Answers>
     </div>
   );
 }

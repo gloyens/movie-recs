@@ -31,7 +31,8 @@ export default function Questions({ messageObject, isLoading, number }: Props) {
   return (
     <QuestionsWrapper>
       <h2>
-        <Number>{number}.</Number> {messageObject["question"]}
+        {number === 0 ? "" : <Number>{number}.</Number>}{" "}
+        {messageObject["question"]}
       </h2>
       <AnswersWrapper>
         {messageObject["answers"].map((answer: string) => (

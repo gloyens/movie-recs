@@ -34,9 +34,12 @@ export default function Responses() {
     fetchData();
   }, [prompt]);
 
-  const lastMessage = messages[messages.length - 1]?.content;
+  // const lastMessage = messages[messages.length - 1]?.content;
 
-  console.log(lastMessage);
+  const lastMessage =
+    messages.length % 2 == 1
+      ? messages[messages.length - 1]?.content
+      : messages[messages.length - 2]?.content;
 
   let messageObject;
 
@@ -56,27 +59,24 @@ export default function Responses() {
         <Questions
           messageObject={messageObject}
           isLoading={isLoading}
-          number={messages.length}
+          number={Math.floor((messages.length - 1) / 2) + 1}
         />
       ) : (
         <Recommendations messageObject={messageObject} />
       )}
 
-      {isLoading ? (
+      {isLoading && (
         <Loading>
           <GridLoader color={"#fff"} size={12} />
         </Loading>
-      ) : (
-        ""
       )}
-      {"question" in messageObject ? (
+
+      {"question" in messageObject && (
         <Answers>
           {answers.map((answer) => (
             <li key={uuid()}>{answer}</li>
           ))}
         </Answers>
-      ) : (
-        ""
       )}
     </div>
   );

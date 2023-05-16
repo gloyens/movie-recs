@@ -9,3 +9,7 @@ export const RecommendationsWrapper = styled("div", {
 export const Recommendation = styled("li", {
   css: css.Recommendation,
 });
+
+export const MoreButton = styled("button", {
+  css: css.MoreButton,
+});

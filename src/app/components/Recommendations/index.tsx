@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { RecommendationsWrapper } from "./styles";
+import { RecommendationsWrapper, Recommendation } from "./styles";
 
 interface Recommendation {
   title: string;
@@ -19,10 +19,10 @@ export default function Recommendations({ messageObject }: Props) {
       <ul>
         {messageObject["recommendations"].map(
           (recommendation: { title: string; description: string }) => (
-            <li key={uuid()}>
+            <Recommendation key={uuid()}>
               <h3>{recommendation.title}</h3>
               <p>{recommendation.description}</p>
-            </li>
+            </Recommendation>
           )
         )}
       </ul>

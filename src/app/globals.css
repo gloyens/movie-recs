@@ -3,9 +3,10 @@
 
   font-family: var(--anybody), Helvetica, sans-serif;
   font-weight: 500;
-  color: #333;
+  font-stretch: 140%;
+  color: #fff;
 }
 
 body {
-  background-color: #eee;
+  background-color: #ff4b22;
 }

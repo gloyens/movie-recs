@@ -4,11 +4,24 @@ div.QuestionsWrapper {
   align-items: center;
 }
 
+div.QuestionsWrapper h2 {
+  font-weight: 700;
+  font-size: 3rem;
+
+  color: white;
+}
+
+span.Number {
+  color: #c7300f;
+  font-weight: 800;
+}
+
 ul.AnswersWrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 12px;
 
   list-style: none;
@@ -17,9 +30,8 @@ ul.AnswersWrapper {
 }
 
 li.AnswerWrapper {
-  width: calc(50% - 6px);
-  min-width: 120px;
-  border-radius: 12px;
+  border-radius: 4px;
+  width: 100%;
 }
 
 button.Answer {
@@ -27,31 +39,41 @@ button.Answer {
   align-items: center;
   justify-content: center;
 
-  padding: 16px;
+  padding: 16px 24px;
   margin: 0;
-  height: 160px;
+  width: 100%;
 
   border: none;
-  border-radius: 12px;
+  border-radius: 4px;
 
-  width: 100%;
   font-size: 16px;
-  background-color: #fff;
-  box-shadow: rgba(17, 12, 46, 0.1) 0px 12px 24px 0px;
+  color: white;
+  text-transform: uppercase;
 
+  background-color: #df3611;
   transition: 0.2s;
 }
 
 button.Answer:hover {
-  background-color: #5f7aee;
+  background-color: #c7300f;
   color: white;
-  box-shadow: rgba(17, 12, 46, 0.25) 0px 12px 24px 0px;
 
-  font-weight: bold;
   cursor: pointer;
 }
 
 button.DisabledAnswer {
-  opacity: 0.7;
+  background-color: #ff4b22;
+  color: #c7300f;
+  font-weight: bold;
   pointer-events: none;
+}
+
+@media (min-width: 480px) {
+  ul.AnswersWrapper {
+    flex-direction: row;
+  }
+
+  li.AnswerWrapper {
+    width: fit-content;
+  }
 }

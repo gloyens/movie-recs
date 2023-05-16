@@ -7,6 +7,7 @@ import {
   AnswersWrapper,
   AnswerWrapper,
   Answer,
+  Number,
 } from "./styles";
 
 interface Props {
@@ -15,18 +16,27 @@ interface Props {
     answers: string[];
   };
   isLoading: boolean;
+  number: number;
 }
 // setPrompt onClick
-export default function Questions({ messageObject, isLoading }: Props) {
-  const { setPrompt } = useAppContext();
+export default function Questions({ messageObject, isLoading, number }: Props) {
+  const { setPrompt, answers, setAnswers } = useAppContext();
+
+  const handleClick = (answer: string) => {
+    setPrompt(answer);
+    setAnswers([...answers, answer]);
+    console.log(answers);
+  };
 
   return (
     <QuestionsWrapper>
-      <h2>{messageObject["question"]}</h2>
+      <h2>
+        <Number>{number}.</Number> {messageObject["question"]}
+      </h2>
       <AnswersWrapper>
         {messageObject["answers"].map((answer: string) => (
           <AnswerWrapper key={uuid()}>
-            <Answer onClick={() => setPrompt(answer)} disabled={isLoading}>
+            <Answer onClick={() => handleClick(answer)} disabled={isLoading}>
               {answer}
             </Answer>
           </AnswerWrapper>

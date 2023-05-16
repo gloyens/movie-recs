@@ -11,7 +11,7 @@ import Recommendations from "../Recommendations";
 import Questions from "../Questions";
 
 export default function Responses() {
-  const { prompt, messages, setMessages } = useAppContext();
+  const { prompt, messages, setMessages, answers } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -50,12 +50,17 @@ export default function Responses() {
   return (
     <div>
       {"question" in messageObject ? (
-        <Questions messageObject={messageObject} isLoading={isLoading} />
+        <Questions
+          messageObject={messageObject}
+          isLoading={isLoading}
+          number={messages.length}
+        />
       ) : (
         <Recommendations messageObject={messageObject} />
       )}
 
       {isLoading ? "Loading..." : ""}
+      <p>{answers}</p>
     </div>
   );
 }

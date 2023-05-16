@@ -49,7 +49,7 @@ export default function Recommendations({ messageObject }: Props) {
           )
         }
       >
-        These are great. More please!
+        More please!
       </MoreButton>
     </RecommendationsWrapper>
   );

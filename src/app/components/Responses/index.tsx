@@ -34,17 +34,17 @@ export default function Responses() {
     fetchData();
   }, [prompt]);
 
-  // const lastMessage = messages[messages.length - 1]?.content;
-
   const lastMessage =
     messages.length % 2 == 1
       ? messages[messages.length - 1]?.content
       : messages[messages.length - 2]?.content;
 
+  console.log(lastMessage);
+
   let messageObject;
 
   try {
-    messageObject = JSON.parse(lastMessage);
+    messageObject = JSON.parse(lastMessage.match(/{.*}/ims)![0]);
   } catch (error) {
     // console.error(error);
     messageObject = {

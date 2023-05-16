@@ -1,3 +1,7 @@
 div.RecommendationsWrapper {
   color: blue;
 }
+
+div.RecommendationsWrapper ul {
+  list-style: none;
+}

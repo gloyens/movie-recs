@@ -32,8 +32,6 @@ export default function Responses() {
   }, [prompt]);
 
   const lastMessage = messages[messages.length - 1]?.content;
-  // const regex = /{.*?}/im;
-  // const messageJSON = lastMessage.match(regex)?.[0] || "";
 
   console.log(lastMessage);
 
@@ -42,10 +40,9 @@ export default function Responses() {
   try {
     messageObject = JSON.parse(lastMessage);
   } catch (error) {
-    // Parsing failed, use a default option
-    console.error(error);
+    // console.error(error);
     messageObject = {
-      question: "Parsing failed",
+      question: "Loading...",
       answers: [],
     };
   }
@@ -53,7 +50,7 @@ export default function Responses() {
   return (
     <div>
       {"question" in messageObject ? (
-        <Questions messageObject={messageObject} />
+        <Questions messageObject={messageObject} isLoading={isLoading} />
       ) : (
         <Recommendations messageObject={messageObject} />
       )}

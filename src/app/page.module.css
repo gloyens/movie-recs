@@ -9,7 +9,7 @@ div.Container {
   flex-direction: column;
   align-items: center;
 
-  padding: 2rem;
+  padding: 6rem 2rem;
 }
 
 div.Container p {

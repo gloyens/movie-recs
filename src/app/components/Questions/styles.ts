@@ -10,6 +10,15 @@ export const AnswersWrapper = styled("ul", {
   css: css.AnswersWrapper,
 });
 
+export const AnswerWrapper = styled("li", {
+  css: css.AnswerWrapper,
+});
+
 export const Answer = styled("button", {
   css: css.Answer,
+  variants: {
+    disabled: {
+      true: css.DisabledAnswer,
+    },
+  },
 });

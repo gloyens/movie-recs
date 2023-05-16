@@ -1,22 +1,57 @@
 div.QuestionsWrapper {
-  color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 ul.AnswersWrapper {
   display: flex;
-  gap: 8px;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
 
   list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+li.AnswerWrapper {
+  width: calc(50% - 6px);
+  min-width: 120px;
+  border-radius: 12px;
 }
 
 button.Answer {
-  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+  margin: 0;
+  height: 160px;
+
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
+
+  width: 100%;
+  font-size: 16px;
+  background-color: #fff;
+  box-shadow: rgba(17, 12, 46, 0.1) 0px 12px 24px 0px;
+
+  transition: 0.2s;
 }
 
 button.Answer:hover {
-  background-color: #ddd;
+  background-color: #5f7aee;
+  color: white;
+  box-shadow: rgba(17, 12, 46, 0.25) 0px 12px 24px 0px;
+
+  font-weight: bold;
   cursor: pointer;
+}
+
+button.DisabledAnswer {
+  opacity: 0.7;
+  pointer-events: none;
 }

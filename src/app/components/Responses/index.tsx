@@ -14,25 +14,25 @@ import Questions from "../Questions";
 import { Loading, Answers } from "./styles";
 
 export default function Responses() {
-  const { prompt, messages, setMessages, answers } = useAppContext();
+  const { prompt, messages, setMessages, answers, keyValue } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      const result = await askOpenAI(messages);
+  const fetchData = async () => {
+    setIsLoading(true);
+    const result = await askOpenAI(messages, keyValue);
 
-      const newMessage: ChatCompletionRequestMessage = {
-        role: "assistant",
-        content: result,
-      };
-
-      setMessages([...messages, newMessage]);
-      setIsLoading(false);
+    const newMessage: ChatCompletionRequestMessage = {
+      role: "assistant",
+      content: result,
     };
 
+    setMessages([...messages, newMessage]);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
     fetchData();
-  }, [prompt]);
+  }, [prompt, keyValue]);
 
   const lastMessage =
     messages.length % 2 == 1
@@ -52,7 +52,7 @@ export default function Responses() {
       answers: [],
     };
   }
-
+  
   return (
     <div>
       {"question" in messageObject ? (

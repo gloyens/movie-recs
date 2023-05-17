@@ -32,6 +32,7 @@ export default function Recommendations({ messageObject }: Props) {
 
   return (
     <RecommendationsWrapper>
+      <h1>Recommendations</h1>
       <ul>
         {messageObject.recommendations.map((recommendation) => (
           <a
@@ -43,7 +44,12 @@ export default function Recommendations({ messageObject }: Props) {
             key={uuid()}
           >
             <Recommendation>
-              <h3>{recommendation.title}</h3>
+              <div>
+                <h3>
+                  {recommendation.title.match(/^(.*?)\s*\(\d{4}\)$/)?.[1]}
+                </h3>
+                <h4>{recommendation.title.match(/\((\d{4})\)/)?.[1]}</h4>
+              </div>
               <p>{recommendation.description}</p>
             </Recommendation>
           </a>

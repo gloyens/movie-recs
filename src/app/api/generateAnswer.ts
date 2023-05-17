@@ -45,7 +45,9 @@ const askOpenAI = async (
           "description": "A parody of disaster movies that follows the crew and passengers of a troubled flight, who all suffer from various quirks and problems."
         }
       ]
-    }`,
+    }
+    
+    Again, I cannot stress enough how important it is that you give me these recommendations in JSON format, as above.`,
   };
 
   const conversation = [system, ...messages];

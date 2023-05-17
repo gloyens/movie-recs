@@ -5,11 +5,11 @@ async function searchIMDb(title: string) {
     const encodedTitle = encodeURIComponent(title);
     const url = `https://www.imdb.com/find/?q=${encodedTitle}`;
 
-    const response = await fetch(url, { mode: "no-cors" });
+    const response = await fetch(url);
     const data = await response.text();
     const $ = load(data);
-    console.log(data);
-    console.log($);
+    console.log(response);
+    console.log(response.text);
 
     const firstLinkElement = $("a.ipc-metadata-list-summary-item__t")[0];
 

@@ -24,7 +24,7 @@ export default function EnterKey() {
 
   return (
     <FormWrapper visible={visible}>
-      <h1>🎬 Movie&#8203;Bot</h1>
+      <h1>Movie&#8203;Bot</h1>
       <FormContent onSubmit={handleSubmit}>
         <p>Please enter your API key:</p>
         <Input

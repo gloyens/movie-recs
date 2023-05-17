@@ -5,9 +5,13 @@ import { useAppContext } from "@/app/utils/context";
 
 import { RecommendationsWrapper, Recommendation, MoreButton } from "./styles";
 
+import searchIMDb from "@/app/api/imdb";
+import { useEffect } from "react";
+
 interface Recommendation {
   title: string;
   description: string;
+  link?: string;
 }
 
 interface Props {
@@ -30,17 +34,35 @@ export default function Recommendations({ messageObject }: Props) {
     setMessages([...messages, newMessage]);
   };
 
+  useEffect(() => {
+    const updateRecommendations = async () => {
+      const updatedRecommendations = await Promise.all(
+        messageObject.recommendations.map(async (recommendation) => {
+          const link = await searchIMDb(recommendation.title);
+          return { ...recommendation, link };
+        })
+      );
+
+      messageObject.recommendations = updatedRecommendations;
+    };
+
+    updateRecommendations();
+  }, [messageObject.recommendations]);
+
   return (
     <RecommendationsWrapper>
       <ul>
-        {messageObject["recommendations"].map(
-          (recommendation: { title: string; description: string }) => (
-            <Recommendation key={uuid()}>
-              <h3>{recommendation.title}</h3>
-              <p>{recommendation.description}</p>
-            </Recommendation>
-          )
-        )}
+        {messageObject.recommendations.map((recommendation) => (
+          <Recommendation key={uuid()}>
+            <h3>{recommendation.title}</h3>
+            <p>{recommendation.description}</p>
+            {recommendation.link && (
+            <a href={recommendation.link} target="_blank" rel="noopener noreferrer">
+              Movie Link
+            </a>
+          )}
+          </Recommendation>
+        ))}
       </ul>
       <MoreButton
         onClick={() =>

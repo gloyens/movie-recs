@@ -8,9 +8,9 @@ async function searchIMDb(title: string): Promise<string | undefined> {
   const html = await response.text();
 
   const $ = load(html);
+  console.log("div.g" + $("div.g"));
+  console.log("div.g first a" + $("div.g").first().find("a"));
   const firstResult = $("div.g").first().find("a").first().attr("href");
-
-  console.log(firstResult);
   return firstResult;
 }
 

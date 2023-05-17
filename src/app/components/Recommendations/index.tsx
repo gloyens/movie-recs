@@ -39,7 +39,6 @@ export default function Recommendations({ messageObject }: Props) {
       const updatedRecommendations = await Promise.all(
         messageObject.recommendations.map(async (recommendation) => {
           const link = await searchIMDb(recommendation.title);
-          console.log(link);
           return { ...recommendation, link };
         })
       );

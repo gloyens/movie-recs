@@ -34,30 +34,30 @@ export default function Recommendations({ messageObject }: Props) {
     <RecommendationsWrapper>
       <ul>
         {messageObject.recommendations.map((recommendation) => (
-          <Recommendation key={uuid()}>
-            <h3>{recommendation.title}</h3>
-            <p>{recommendation.description}</p>
-            <a
-              href={`https://duckduckgo.com/?q=!ducky+${encodeURIComponent(
-                recommendation.title + " imdb"
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Movie Link
-            </a>
-          </Recommendation>
+          <a
+            href={`https://duckduckgo.com/?q=!ducky+${encodeURIComponent(
+              recommendation.title + " imdb"
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            key={uuid()}
+          >
+            <Recommendation>
+              <h3>{recommendation.title}</h3>
+              <p>{recommendation.description}</p>
+            </Recommendation>
+          </a>
         ))}
+        <MoreButton
+          onClick={() =>
+            handleClick(
+              "Please offer five more similar recommendations in the same JSON format."
+            )
+          }
+        >
+          More please!
+        </MoreButton>
       </ul>
-      <MoreButton
-        onClick={() =>
-          handleClick(
-            "Please offer five more similar recommendations in the same JSON format."
-          )
-        }
-      >
-        More please!
-      </MoreButton>
     </RecommendationsWrapper>
   );
 }

@@ -8,6 +8,17 @@ div.RecommendationsWrapper ul {
   justify-content: center;
 }
 
+div.RecommendationsWrapper h1 {
+  color: #c7300f;
+  font-weight: 800;
+  font-size: clamp(1.2rem, 6vw, 3rem);
+  letter-spacing: -4px;
+  line-height: 0.9;
+
+  margin: 0 2rem 3rem;
+  word-break: break-word;
+}
+
 div.RecommendationsWrapper ul > a {
   text-decoration: none;
   max-width: 100%;
@@ -35,8 +46,14 @@ li.Recommendation h3 {
   font-size: 2rem;
   font-weight: bold;
   margin: 0;
-  margin-bottom: 1rem;
   word-wrap: break-word;
+}
+
+li.Recommendation h4 {
+  color: #c7300f;
+  font-weight: 700;
+  font-size: 24px;
+  margin: 0 0 1rem;
 }
 
 li.Recommendation p {

@@ -11,7 +11,7 @@ async function searchIMDb(title: string) {
     const movieLink = $("#main > .article >  .findSection > .findList > tbody")
       .find("td")
       .find("a")
-      .attr('href');
+      .attr("href");
 
     if (!movieLink) throw new Error(`No IMDb link found for ${title}`);
 

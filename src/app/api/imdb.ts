@@ -4,7 +4,7 @@ async function searchIMDb(title: string): Promise<string | undefined> {
   const url = `https://www.google.com/search?q=${encodeURIComponent(
     title + " imdb"
   )}`;
-  const response = await fetch(url);
+  const response = await fetch(url, { mode: "no-cors" });
   const html = await response.text();
 
   const $ = load(html);

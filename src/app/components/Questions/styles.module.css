@@ -2,13 +2,16 @@ div.QuestionsWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding: 0 2rem;
 }
 
 div.QuestionsWrapper h2 {
   font-weight: 700;
-  font-size: 3rem;
+  max-width: 100%;
 
   color: white;
+  font-size: clamp(2rem, 10vw, 3rem);
 }
 
 span.Number {

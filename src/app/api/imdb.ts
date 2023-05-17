@@ -1,33 +1,19 @@
 import { load } from "cheerio";
+import fetch from 'node-fetch';
 
-async function searchIMDb(title: string) {
-  try {
-    const encodedTitle = encodeURIComponent(title);
-    const url = `https://www.imdb.com/find/?q=${encodedTitle}`;
+async function searchIMDb(title: string): Promise<string | undefined> {
+  const url = `https://www.google.com/search?q=${encodeURIComponent(title + " imdb")}`;
+  const response = await fetch(url);
+  const html = await response.text();
+  
+  const $ = load(html);
+  const firstResult = $('div.g')
+    .first()
+    .find('a')
+    .first()
+    .attr('href');
 
-    const body = await fetch(url).then((res) => res.text());
-    const $ = load(body);
-
-    const movieLink = $("#main > .article >  .findSection > .findList > tbody")
-      .find("td")
-      .find("a")
-      .attr("href");
-
-    if (!movieLink) throw new Error(`No IMDb link found for ${title}`);
-
-    return movieLink;
-    // if (firstLinkElement) {
-    //   const firstLink = firstLinkElement.attribs.href;
-    //   // const imdbLink = `https://www.imdb.com${firstLink}`;
-    //   // return { link: imdbLink };
-    //   return `https://www.imdb.com${firstLink}`;
-    // } else {
-    //   throw new Error(`No IMDb link found for ${title}`);
-    // }
-  } catch (error) {
-    console.error("Error occurred while searching IMDb:", error);
-    throw new Error("Internal server error");
-  }
+  return firstResult;
 }
 
 export default searchIMDb;

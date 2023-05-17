@@ -52,7 +52,7 @@ export default function Responses() {
       answers: [],
     };
   }
-  
+
   return (
     <div>
       {"question" in messageObject ? (

@@ -17,19 +17,17 @@ export const makeRequest = async (
   apiKey: string,
   temperature = 0.6
 ) => {
-
   if (configuration?.apiKey === "") {
     configuration = new Configuration({
       apiKey: apiKey,
     });
 
     openai = new OpenAIApi(configuration);
-  } 
+  }
   // else {
   //   throw new Error(
   //   "OpenAI API key not configured, please follow instructions in README.md"
   // ) }
-
 
   const completion = await openai?.createChatCompletion({
     model: "gpt-3.5-turbo",

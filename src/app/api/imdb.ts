@@ -5,7 +5,7 @@ async function searchIMDb(title: string) {
     const encodedTitle = encodeURIComponent(title);
     const url = `https://www.imdb.com/find/?q=${encodedTitle}`;
 
-    const response = await fetch(url, { mode: "cors" });
+    const response = await fetch(url, { mode: "no-cors" });
     const data = await response.text();
     const $ = load(data);
 

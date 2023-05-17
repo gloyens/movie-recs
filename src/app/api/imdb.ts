@@ -8,6 +8,8 @@ async function searchIMDb(title: string) {
     const response = await fetch(url, { mode: "no-cors" });
     const data = await response.text();
     const $ = load(data);
+    console.log(data);
+    console.log($);
 
     const firstLinkElement = $("a.ipc-metadata-list-summary-item__t")[0];
 

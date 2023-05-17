@@ -47,6 +47,7 @@ export default function Recommendations({ messageObject }: Props) {
     };
 
     updateRecommendations();
+    console.log(messageObject);
   }, [messageObject]);
 
   return (

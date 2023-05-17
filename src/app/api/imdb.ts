@@ -3,6 +3,7 @@ async function searchIMDb(title: string): Promise<string | undefined> {
     title + " imdb"
   )}`;
 
+  console.log(url);
   return url;
 }
 

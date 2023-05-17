@@ -33,14 +33,21 @@ export default function Recommendations({ messageObject }: Props) {
   return (
     <RecommendationsWrapper>
       <ul>
-        {messageObject["recommendations"].map(
-          (recommendation: { title: string; description: string }) => (
-            <Recommendation key={uuid()}>
-              <h3>{recommendation.title}</h3>
-              <p>{recommendation.description}</p>
-            </Recommendation>
-          )
-        )}
+        {messageObject.recommendations.map((recommendation) => (
+          <Recommendation key={uuid()}>
+            <h3>{recommendation.title}</h3>
+            <p>{recommendation.description}</p>
+            <a
+              href={`https://duckduckgo.com/?q=!ducky+${encodeURIComponent(
+                recommendation.title + " imdb"
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Movie Link
+            </a>
+          </Recommendation>
+        ))}
       </ul>
       <MoreButton
         onClick={() =>

@@ -57,15 +57,13 @@ export default function Recommendations({ messageObject }: Props) {
           <Recommendation key={uuid()}>
             <h3>{recommendation.title}</h3>
             <p>{recommendation.description}</p>
-            {recommendation.link && (
-              <a
-                href={recommendation.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Movie Link
-              </a>
-            )}
+            <a
+              href={recommendation.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Movie Link
+            </a>
           </Recommendation>
         ))}
       </ul>

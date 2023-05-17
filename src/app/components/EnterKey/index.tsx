@@ -15,17 +15,20 @@ export default function EnterKey() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setKeyValue(inputContent);
-    initializeOpenAI(keyValue);
-    setVisible(false);
+    if (inputContent.length > 0) {
+      setKeyValue(inputContent);
+      initializeOpenAI(keyValue);
+      setVisible(false);
+    }
   };
 
   return (
     <FormWrapper visible={visible}>
+      <h1>🎬 MovieBot</h1>
       <FormContent onSubmit={handleSubmit}>
         <p>Please enter your API key:</p>
         <Input
-          type="text"
+          type="password"
           onChange={(event) => setInputContent(event.target.value)}
         />
         <Submit type="submit">Submit</Submit>

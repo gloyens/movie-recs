@@ -1,5 +1,4 @@
 import { load } from "cheerio";
-import fetch from 'node-fetch';
 
 async function searchIMDb(title: string): Promise<string | undefined> {
   const url = `https://www.google.com/search?q=${encodeURIComponent(title + " imdb")}`;

@@ -5,10 +5,13 @@ async function searchIMDb(title: string) {
     const encodedTitle = encodeURIComponent(title);
     const url = `https://www.imdb.com/find/?q=${encodedTitle}`;
 
-    const body = await fetch(url).then(res => res.text());
+    const body = await fetch(url).then((res) => res.text());
     const $ = load(body);
 
-    const movieLink = $("#main > .article >  .findSection > .findList > tbody").find("td").find("a").attr('href');
+    const movieLink = $("#main > .article >  .findSection > .findList > tbody")
+      .find("td")
+      .find("a")
+      .attr('href');
 
     if (!movieLink) throw new Error(`No IMDb link found for ${title}`);
 

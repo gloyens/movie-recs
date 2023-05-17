@@ -1,15 +1,49 @@
 div.RecommendationsWrapper ul {
   list-style: none;
   padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+div.RecommendationsWrapper ul > a {
+  text-decoration: none;
+  max-width: calc(50% - 1rem);
+  min-width: 270px;
+}
+
+li.Recommendation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border-radius: 8px;
+  padding: 1rem;
+  /* max-width: calc(50% - 1rem); */
+  height: 100%;
+
+  transition: 0.2s;
+}
+
+li.Recommendation:hover {
+  box-shadow: 20px 20px 60px #c7300f, -20px -20px 40px #ff7438;
 }
 
 li.Recommendation h3 {
   font-size: 2rem;
   font-weight: bold;
+  margin: 0;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
 }
 
 li.Recommendation p {
   font-weight: 300;
+  font-stretch: 120%;
+  font-size: 12px;
+  margin: 0;
 }
 
 button.MoreButton {
@@ -19,6 +53,8 @@ button.MoreButton {
 
   padding: 16px 24px;
   margin: 0;
+  margin-top: 2rem;
+  /* width: calc(50% - 1rem); */
   width: 100%;
 
   border: none;

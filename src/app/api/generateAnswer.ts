@@ -25,7 +25,7 @@ const askOpenAI = async (messages: ChatCompletionRequestMessage[], keyValue: str
     
     To ensure the recommendations take your answers into account as much as possible, you should use a ranking system to weigh the importance of each answer. Assign a score to each answer and calculate the overall relevance of a movie based on the scores of the selected answers.
 
-    The final recommendations output must also be in JSON format, as shown below. Again, it is absolutely crucial that the response be in the exact JSON format shown below, without anything before or after. You MUST NOT format it in the default bulleted list.
+    The final recommendations output must also be in JSON format, as shown below. Again, it is absolutely crucial that the response be in the exact JSON format shown below, without anything before or after.
     
     {
       "recommendations": [

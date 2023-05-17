@@ -2,8 +2,8 @@ import { useEffect } from "react";
 
 import { v4 as uuid } from "uuid";
 import { ChatCompletionRequestMessage } from "openai";
-import { useAppContext } from "@/app/utils/context";
 
+import { useAppContext } from "@/app/utils/context";
 import searchIMDb from "@/app/api/imdb";
 
 import { RecommendationsWrapper, Recommendation, MoreButton } from "./styles";

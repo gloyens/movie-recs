@@ -1,6 +1,6 @@
 div.RecommendationsWrapper ul {
   list-style: none;
-  padding: 0;
+  padding: 0 1rem;
 
   display: flex;
   flex-wrap: wrap;
@@ -10,8 +10,8 @@ div.RecommendationsWrapper ul {
 
 div.RecommendationsWrapper ul > a {
   text-decoration: none;
-  max-width: calc(50% - 1rem);
-  min-width: 270px;
+  max-width: 100%;
+  min-width: 240px;
 }
 
 li.Recommendation {
@@ -73,4 +73,14 @@ button.MoreButton:hover {
   color: white;
 
   cursor: pointer;
+}
+
+@media (min-width: 576px) {
+  div.RecommendationsWrapper ul {
+    gap: 2rem;
+  }
+
+  div.RecommendationsWrapper ul > a {
+    max-width: calc(50% - 1rem);
+  }
 }

@@ -5,7 +5,7 @@ import { makeRequest } from "../utils/openai";
 const askOpenAI = async (
   messages: ChatCompletionRequestMessage[],
   keyValue: string
-  ) => {
+) => {
   const system = <ChatCompletionRequestMessage>{
     role: "system",
     content: `You are now a movie recommendation bot known as MovieBot.

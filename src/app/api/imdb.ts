@@ -1,17 +1,23 @@
-import * as cheerio from "cheerio";
+import nameToImdb from "name-to-imdb";
 
-async function searchIMDb(title: string): Promise<string | undefined> {
-  const url = `https://www.google.com/search?q=${encodeURIComponent(
-    title + " imdb"
-  )}`;
-  const response = await fetch(url, { mode: "no-cors" });
-  const html = await response.text();
-  console.log(html);
+function convertTitle(input: string): { name: string, year: number } {
+  const regex = /^(.*?) \((\d+)\)$/;
+  const matches = input.match(regex);
 
-  const $ = cheerio.load(html);
-  console.log($);
-  const firstResult = $("div.g").first().find("a").first().attr("href");
-  return firstResult;
+  if (!matches || matches.length !== 3) {
+    throw new Error('Invalid input format');
+  }
+
+  const name = matches[1];
+  const year = parseInt(matches[2]);
+
+  return { name, year };
+}
+
+async function searchIMDb(title: string) {
+  const titleObject = convertTitle(title);
+
+  console.log(nameToImdb(titleObject))
 }
 
 export default searchIMDb;

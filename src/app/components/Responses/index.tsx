@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { GridLoader } from "react-spinners";
 import { ChatCompletionRequestMessage } from "openai";
@@ -15,9 +15,22 @@ import { Loading } from "./styles";
 export default function Responses() {
   const { prompt, messages, setMessages, keyValue } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState("");
+
+  const loadingTimer = useRef<null | ReturnType<typeof setTimeout>>(null);
 
   const fetchData = async () => {
     setIsLoading(true);
+    setLoadingText("");
+
+    if (loadingTimer.current) {
+      clearTimeout(loadingTimer.current);
+    }
+
+    loadingTimer.current = setTimeout(() => {
+      setLoadingText("Waiting for OpenAI - this might take a little while!");
+    }, 10000);
+
     const result = await askOpenAI(messages, keyValue);
 
     const newMessage: ChatCompletionRequestMessage = {
@@ -27,10 +40,16 @@ export default function Responses() {
 
     setMessages([...messages, newMessage]);
     setIsLoading(false);
+    setLoadingText("");
   };
 
   useEffect(() => {
     fetchData();
+    return () => {
+      if (loadingTimer.current) {
+        clearTimeout(loadingTimer.current);
+      }
+    };
   }, [prompt, keyValue]);
 
   const lastMessage =
@@ -67,6 +86,7 @@ export default function Responses() {
       {isLoading && (
         <Loading>
           <GridLoader color={"#fff"} size={12} />
+          <p>{loadingText}</p>
         </Loading>
       )}
     </div>

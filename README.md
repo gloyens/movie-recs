@@ -1,5 +1,5 @@
 # MovieBot
-### Live website: https://movie-recs-seven.vercel.app
+### Live website: https://www.moviebot.app
 
 Thanks for checking out MovieBot!
 You'll need an OpenAI API key to use it. If you don't have one, feel free to check out the video below to see how it works:

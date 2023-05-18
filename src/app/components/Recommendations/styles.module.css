@@ -13,7 +13,6 @@ div.RecommendationsWrapper ul {
 div.RecommendationsWrapper h2 {
   color: #c7300f;
   font-weight: 800;
-  /* font-size: clamp(1.8rem, 6vw, 3rem); */
   font-size: 2rem;
   letter-spacing: -4px;
   line-height: 0.9;
@@ -51,6 +50,8 @@ div.ImageWrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 2 / 3;
+  box-shadow: 10px 10px 30px #980f05;
+  z-index: -1;
 }
 
 div.ContentWrapper h3 {

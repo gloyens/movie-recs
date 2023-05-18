@@ -1,6 +1,13 @@
 div.Loading {
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
   align-items: center;
   justify-content: center;
   padding: 2rem;
+
+  width: 400px;
+  margin: auto;
+  text-align: center;
 }

@@ -22,7 +22,7 @@ async function getMoviePoster(movieString: string) {
     const movieId = searchData.results[0].id;
 
     const imagesResponse = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/images`,
+      `https://api.themoviedb.org/3/movie/${movieId}/images?include_image_language=en%2C%20null`,
       options
     );
     const imageData = await imagesResponse.json();

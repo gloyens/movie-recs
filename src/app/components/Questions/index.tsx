@@ -20,7 +20,7 @@ interface Props {
   isLoading: boolean;
   number: number;
 }
-// setPrompt onClick
+
 export default function Questions({ messageObject, isLoading, number }: Props) {
   const { setPrompt, answers, setAnswers, messages, setMessages } =
     useAppContext();

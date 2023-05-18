@@ -15,7 +15,7 @@ div.QuestionsWrapper h2 {
   word-break: break-word;
 
   color: white;
-  font-size: clamp(2rem, 10vw, 3rem);
+  font-size: clamp(1.8rem, 9vw, 3rem);
 }
 
 span.Number {

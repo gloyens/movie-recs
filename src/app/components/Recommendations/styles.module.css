@@ -6,23 +6,26 @@ div.RecommendationsWrapper ul {
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+
+  max-width: 1080px;
 }
 
-div.RecommendationsWrapper h1 {
+div.RecommendationsWrapper h2 {
   color: #c7300f;
   font-weight: 800;
-  font-size: clamp(1.2rem, 6vw, 3rem);
+  /* font-size: clamp(1.8rem, 6vw, 3rem); */
+  font-size: 2rem;
   letter-spacing: -4px;
   line-height: 0.9;
 
-  margin: 0 2rem 3rem;
+  margin: 0 0 3rem;
   word-break: break-word;
+  text-align: center;
 }
 
-div.RecommendationsWrapper ul > a {
+a.LinkWrapper {
   text-decoration: none;
-  max-width: 100%;
-  min-width: 240px;
+  max-width: 280px;
 }
 
 li.Recommendation {
@@ -30,41 +33,41 @@ li.Recommendation {
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  gap: 1rem;
 
   border-radius: 8px;
-  padding: 1rem;
-  /* max-width: calc(50% - 1rem); */
   height: 100%;
 
   transition: 0.2s;
 }
 
 li.Recommendation:hover {
-  box-shadow: 20px 20px 60px #c7300f, -20px -20px 40px #ff7438;
+  /* box-shadow: 20px 20px 60px #c7300f, -20px -20px 40px #ff7438; */
+  scale: 1.02;
 }
 
 div.ImageWrapper {
   position: relative;
-  height: 240px;
-  width: 160px;
+  width: 100%;
+  aspect-ratio: 2 / 3;
 }
 
-li.Recommendation h3 {
+div.ContentWrapper h3 {
   font-size: 2rem;
   font-weight: bold;
   margin: 0;
   word-wrap: break-word;
 }
 
-li.Recommendation h4 {
+div.ContentWrapper h4 {
   color: #c7300f;
   font-weight: 700;
   font-size: 24px;
   margin: 0 0 1rem;
 }
 
-li.Recommendation p {
+div.ContentWrapper p {
   font-weight: 300;
   font-stretch: 120%;
   font-size: 12px;
@@ -103,9 +106,5 @@ button.MoreButton:hover {
 @media (min-width: 576px) {
   div.RecommendationsWrapper ul {
     gap: 2rem;
-  }
-
-  div.RecommendationsWrapper ul > a {
-    max-width: calc(50% - 1rem);
   }
 }

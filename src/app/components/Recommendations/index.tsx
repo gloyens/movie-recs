@@ -9,9 +9,11 @@ import getMoviePoster from "@/app/api/tmdb";
 
 import {
   RecommendationsWrapper,
+  LinkWrapper,
   Recommendation,
   MoreButton,
   ImageWrapper,
+  ContentWrapper,
 } from "./styles";
 
 interface Recommendation {
@@ -58,13 +60,13 @@ export default function Recommendations({ messageObject }: Props) {
 
   return (
     <RecommendationsWrapper>
-      <h1>Recommendations</h1>
+      <h2>Check out these suggestions:</h2>
       <ul>
         {messageObject.recommendations.map((recommendation, index) => {
           const poster = posters[index];
 
           return (
-            <a
+            <LinkWrapper
               href={`https://duckduckgo.com/?q=!ducky+${encodeURIComponent(
                 recommendation.title + " imdb"
               )}`}
@@ -80,21 +82,21 @@ export default function Recommendations({ messageObject }: Props) {
                     fill
                   />
                 </ImageWrapper>
-                <div>
+                <ContentWrapper>
                   <h3>
                     {recommendation.title.match(/^(.*?)\s*\(\d{4}\)$/)?.[1]}
                   </h3>
                   <h4>{recommendation.title.match(/\((\d{4})\)/)?.[1]}</h4>
-                </div>
-                <p>{recommendation.description}</p>
+                  <p>{recommendation.description}</p>
+                </ContentWrapper>
               </Recommendation>
-            </a>
+            </LinkWrapper>
           );
         })}
         <MoreButton
           onClick={() =>
             handleClick(
-              "Please offer five more similar recommendations in the same JSON format."
+              "Please offer six more similar recommendations in the same JSON format."
             )
           }
         >

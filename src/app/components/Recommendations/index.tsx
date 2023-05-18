@@ -2,11 +2,17 @@ import { useState, useEffect } from "react";
 
 import { v4 as uuid } from "uuid";
 import { ChatCompletionRequestMessage } from "openai";
+import Image from "next/image";
 
 import { useAppContext } from "@/app/utils/context";
 import getMoviePoster from "@/app/api/tmdb";
 
-import { RecommendationsWrapper, Recommendation, MoreButton } from "./styles";
+import {
+  RecommendationsWrapper,
+  Recommendation,
+  MoreButton,
+  ImageWrapper,
+} from "./styles";
 
 interface Recommendation {
   title: string;
@@ -67,10 +73,14 @@ export default function Recommendations({ messageObject }: Props) {
               key={uuid()}
             >
               <Recommendation>
+                <ImageWrapper>
+                  <Image
+                    src={poster}
+                    alt={`${recommendation.title} poster`}
+                    fill
+                  />
+                </ImageWrapper>
                 <div>
-                  <a href={poster} target="_blank">
-                    poster
-                  </a>
                   <h3>
                     {recommendation.title.match(/^(.*?)\s*\(\d{4}\)$/)?.[1]}
                   </h3>

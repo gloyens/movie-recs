@@ -26,6 +26,8 @@ div.RecommendationsWrapper ul > a {
 }
 
 li.Recommendation {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -40,6 +42,12 @@ li.Recommendation {
 
 li.Recommendation:hover {
   box-shadow: 20px 20px 60px #c7300f, -20px -20px 40px #ff7438;
+}
+
+div.ImageWrapper {
+  position: relative;
+  height: 240px;
+  width: 160px;
 }
 
 li.Recommendation h3 {

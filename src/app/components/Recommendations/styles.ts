@@ -10,6 +10,10 @@ export const Recommendation = styled("li", {
   css: css.Recommendation,
 });
 
+export const ImageWrapper = styled("div", {
+  css: css.ImageWrapper,
+});
+
 export const MoreButton = styled("button", {
   css: css.MoreButton,
 });

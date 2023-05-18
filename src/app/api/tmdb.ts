@@ -31,6 +31,7 @@ async function getMoviePoster(movieString: string) {
     return `https://image.tmdb.org/t/p/original${poster}`;
   } catch (err) {
     console.error(err);
+    return "/not-found.png";
   }
 }
 

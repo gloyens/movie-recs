@@ -4,26 +4,3 @@ div.Loading {
   justify-content: center;
   padding: 2rem;
 }
-
-ol.Answers {
-  display: flex;
-  /* flex-direction: column; */
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 1rem 2rem;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-ol.Answers li {
-  font-size: 12px;
-  color: white;
-  margin-left: 2rem;
-}
-
-ol.Answers li::marker {
-  color: #c7300f;
-  font-weight: bold;
-}

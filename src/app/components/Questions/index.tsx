@@ -3,6 +3,7 @@ import { ChatCompletionRequestMessage } from "openai";
 
 import { useAppContext } from "@/app/utils/context";
 
+import Answers from "../Answers";
 import {
   QuestionsWrapper,
   AnswersWrapper,
@@ -38,6 +39,7 @@ export default function Questions({ messageObject, isLoading, number }: Props) {
 
   return (
     <QuestionsWrapper>
+      <Answers />
       <h2>
         {number === 0 ? "" : <Number>{number}.</Number>}{" "}
         {messageObject["question"]}

@@ -10,7 +10,6 @@ import askOpenAI from "@/app/api/generateAnswer";
 
 import Recommendations from "../Recommendations";
 import Questions from "../Questions";
-import Answers from "../Answers";
 import { Loading } from "./styles";
 
 export default function Responses() {
@@ -70,15 +69,6 @@ export default function Responses() {
           <GridLoader color={"#fff"} size={12} />
         </Loading>
       )}
-
-      {/* {"question" in messageObject && (
-        <Answers>
-          {answers.map((answer) => (
-            <li key={uuid()}>{answer}</li>
-          ))}
-        </Answers>
-        )} */}
-      <Answers />
     </div>
   );
 }

@@ -1,13 +1,15 @@
 ol.AnswerWrapper {
   display: flex;
-  /* flex-direction: column; */
+  justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 1rem 2rem;
+  margin: 0 0 3rem;
+  padding: 0 2rem;
+  text-align: center;
 
-  position: fixed;
+  /* position: fixed;
   top: 0;
-  left: 0;
+  left: 0; */
 }
 
 ol.AnswerWrapper li {

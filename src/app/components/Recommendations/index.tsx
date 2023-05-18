@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useAppContext } from "@/app/utils/context";
 import getMoviePoster from "@/app/api/tmdb";
 
+import Answers from "../Answers";
 import {
   RecommendationsWrapper,
   LinkWrapper,
@@ -60,7 +61,8 @@ export default function Recommendations({ messageObject }: Props) {
 
   return (
     <RecommendationsWrapper>
-      <h2>Check out these suggestions:</h2>
+      <h2>Check out these movies:</h2>
+      <Answers />
       <ul>
         {messageObject.recommendations.map((recommendation, index) => {
           const poster = posters[index];

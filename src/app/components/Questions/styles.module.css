@@ -10,6 +10,9 @@ div.QuestionsWrapper {
 div.QuestionsWrapper h2 {
   font-weight: 700;
   max-width: 100%;
+  margin-top: 0;
+
+  word-break: break-word;
 
   color: white;
   font-size: clamp(2rem, 10vw, 3rem);

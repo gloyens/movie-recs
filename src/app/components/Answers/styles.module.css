@@ -1,0 +1,22 @@
+ol.AnswerWrapper {
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 1rem 2rem;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+ol.AnswerWrapper li {
+  font-size: 12px;
+  color: white;
+  margin-left: 2rem;
+}
+
+ol.AnswerWrapper li::marker {
+  color: #c7300f;
+  font-weight: bold;
+}

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import { v4 as uuid } from "uuid";
 import { GridLoader } from "react-spinners";
 import { ChatCompletionRequestMessage } from "openai";
 
@@ -11,10 +10,11 @@ import askOpenAI from "@/app/api/generateAnswer";
 
 import Recommendations from "../Recommendations";
 import Questions from "../Questions";
-import { Loading, Answers } from "./styles";
+import Answers from "../Answers";
+import { Loading } from "./styles";
 
 export default function Responses() {
-  const { prompt, messages, setMessages, answers, keyValue } = useAppContext();
+  const { prompt, messages, setMessages, keyValue } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = async () => {
@@ -71,13 +71,14 @@ export default function Responses() {
         </Loading>
       )}
 
-      {"question" in messageObject && (
+      {/* {"question" in messageObject && (
         <Answers>
           {answers.map((answer) => (
             <li key={uuid()}>{answer}</li>
           ))}
         </Answers>
-      )}
+        )} */}
+      <Answers />
     </div>
   );
 }

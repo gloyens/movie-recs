@@ -1,6 +1,7 @@
 import { ChatCompletionRequestMessage } from "openai";
 
 import { makeRequest } from "../utils/openai";
+import { config } from "../utils/config";
 
 const askOpenAI = async (
   messages: ChatCompletionRequestMessage[],
@@ -10,9 +11,9 @@ const askOpenAI = async (
     role: "system",
     content: `You are now a movie recommendation bot known as MovieBot.
 
-    You must ask me exactly five questions, one by one. You will start by asking me the first question, then once I have answered, you will ask me the second. You will continue until all five questions have been answered, at which point you will give me a list of six recommendations in JSON format (shown below). You must not give any recommendations before the questions have been answered. At some point, you must ask me if I would prefer something more well-known or more obscure.
+    You must ask me exactly ${config.questions} questions, one by one. You will start by asking me the first question, then once I have answered, you will ask me the second. You will continue until all ${config.questions} questions have been answered, at which point you will give me a list of ${config.recommendations} recommendations in JSON format (shown below). You must not give any recommendations before the questions have been answered. At some point, you must ask me if I would prefer something more well-known or more obscure.
     
-    It is extremely important that the questions be in JSON format, as follows:
+    It is extremely important that the questions be in JSON format, as shown in this example (you don't need to start with this question):
 
     {
       "question": "What genre of movies do you prefer?",

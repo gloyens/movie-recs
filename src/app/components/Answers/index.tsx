@@ -4,7 +4,7 @@ import { useAppContext } from "@/app/utils/context";
 
 import { AnswerWrapper } from "./styles";
 
-export default function Answert() {
+export default function Answer() {
   const { answers } = useAppContext();
 
   return (

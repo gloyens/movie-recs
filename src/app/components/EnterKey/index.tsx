@@ -9,7 +9,6 @@ import { FormWrapper, FormContent, Input, Submit } from "./styles";
 
 export default function EnterKey() {
   const [visible, setVisible] = useState(true);
-  // const [keyValue, setKeyValue] = useState("");
   const { keyValue, setKeyValue } = useAppContext();
   const [inputContent, setInputContent] = useState("");
 

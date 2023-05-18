@@ -5,6 +5,7 @@ import { ChatCompletionRequestMessage } from "openai";
 import Image from "next/image";
 
 import { useAppContext } from "@/app/utils/context";
+import { config } from "@/app/utils/config";
 import getMoviePoster from "@/app/api/tmdb";
 
 import Answers from "../Answers";
@@ -98,7 +99,7 @@ export default function Recommendations({ messageObject }: Props) {
         <MoreButton
           onClick={() =>
             handleClick(
-              "Please offer six more similar recommendations in the same JSON format."
+              `Please offer ${config.recommendations} more similar recommendations in the same JSON format.`
             )
           }
         >

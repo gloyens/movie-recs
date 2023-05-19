@@ -13,7 +13,6 @@ export default function EnterKey() {
   const [inputContent, setInputContent] = useState("");
 
   useEffect(() => {
-    console.log(keyValue.length);
     if (keyValue.length > 0 && keyValue.startsWith("sk-")) {
       initializeOpenAI(keyValue);
       setVisible(false);

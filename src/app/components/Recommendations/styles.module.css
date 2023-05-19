@@ -76,7 +76,7 @@ div.ContentWrapper p {
   margin: 0;
 }
 
-button.MoreButton {
+button.Button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,7 +98,7 @@ button.MoreButton {
   transition: 0.2s;
 }
 
-button.MoreButton:hover {
+button.Button:hover {
   background-color: #c7300f;
   color: white;
 

@@ -22,6 +22,10 @@ export const ContentWrapper = styled("div", {
   css: css.ContentWrapper,
 });
 
-export const MoreButton = styled("button", {
-  css: css.MoreButton,
+export const ButtonWrapper = styled("div", {
+  css: css.ButtonWrapper,
+});
+
+export const Button = styled("button", {
+  css: css.Button,
 });

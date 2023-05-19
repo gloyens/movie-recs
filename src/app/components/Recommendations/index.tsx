@@ -13,7 +13,8 @@ import {
   RecommendationsWrapper,
   LinkWrapper,
   Recommendation,
-  MoreButton,
+  Button,
+  ButtonWrapper,
   ImageWrapper,
   ContentWrapper,
 } from "./styles";
@@ -96,15 +97,20 @@ export default function Recommendations({ messageObject }: Props) {
             </LinkWrapper>
           );
         })}
-        <MoreButton
-          onClick={() =>
-            handleClick(
-              `Please offer ${config.recommendations} more similar recommendations in the same JSON format.`
-            )
-          }
-        >
-          More please!
-        </MoreButton>
+        <ButtonWrapper>
+          <Button
+            onClick={() =>
+              handleClick(
+                `Please offer ${config.recommendations} more similar recommendations in the same JSON format.`
+              )
+            }
+          >
+            More please!
+          </Button>
+          <Button>
+            <a href="/">Restart</a>
+          </Button>
+        </ButtonWrapper>
       </ul>
     </RecommendationsWrapper>
   );

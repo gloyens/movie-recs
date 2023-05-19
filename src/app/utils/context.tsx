@@ -3,6 +3,7 @@
 import { SetStateAction, createContext, useContext, useState } from "react";
 
 import { ChatCompletionRequestMessage } from "openai";
+import useLocalState from "@phntms/use-local-state";
 
 interface ContextProps {
   prompt: string;
@@ -19,7 +20,7 @@ const AppContext = createContext<ContextProps>({} as ContextProps);
 
 const AppContextProvider = ({ children }: { children?: React.ReactNode }) => {
   const [prompt, setPrompt] = useState("");
-  const [keyValue, setKeyValue] = useState("");
+  const [keyValue, setKeyValue] = useLocalState("APIKey", "");
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
 

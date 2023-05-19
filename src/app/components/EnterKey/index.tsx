@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { initializeOpenAI } from "@/app/utils/openai";
 import { useAppContext } from "@/app/utils/context";
@@ -11,6 +11,13 @@ export default function EnterKey() {
   const [visible, setVisible] = useState(true);
   const { keyValue, setKeyValue } = useAppContext();
   const [inputContent, setInputContent] = useState("");
+
+  useEffect(() => {
+    if (keyValue.length > 0 && keyValue.startsWith("sk-")) {
+      initializeOpenAI(keyValue);
+      setVisible(false);
+    }
+  }, [keyValue]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

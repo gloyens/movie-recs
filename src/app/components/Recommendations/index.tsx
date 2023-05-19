@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 import { v4 as uuid } from "uuid";
 import { ChatCompletionRequestMessage } from "openai";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import { useAppContext } from "@/app/utils/context";
@@ -15,6 +14,7 @@ import {
   LinkWrapper,
   Recommendation,
   Button,
+  ButtonWrapper,
   ImageWrapper,
   ContentWrapper,
 } from "./styles";
@@ -33,7 +33,6 @@ interface Props {
 export default function Recommendations({ messageObject }: Props) {
   const { setPrompt, messages, setMessages } = useAppContext();
   const [posters, setPosters] = useState<string[]>([]);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchPosters = async () => {
@@ -98,16 +97,20 @@ export default function Recommendations({ messageObject }: Props) {
             </LinkWrapper>
           );
         })}
-        <Button
-          onClick={() =>
-            handleClick(
-              `Please offer ${config.recommendations} more similar recommendations in the same JSON format.`
-            )
-          }
-        >
-          More please!
-        </Button>
-        <Button onClick={() => router.refresh()}>Restart</Button>
+        <ButtonWrapper>
+          <Button
+            onClick={() =>
+              handleClick(
+                `Please offer ${config.recommendations} more similar recommendations in the same JSON format.`
+              )
+            }
+          >
+            More please!
+          </Button>
+          <Button>
+            <a href="/">Restart</a>
+          </Button>
+        </ButtonWrapper>
       </ul>
     </RecommendationsWrapper>
   );

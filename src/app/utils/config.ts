@@ -1,4 +1,4 @@
 export const config = {
-  questions: "eight",
-  recommendations: "six",
+  questions: "five",
+  recommendations: "three",
 };

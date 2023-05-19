@@ -25,7 +25,7 @@ const askOpenAI = async (
       ]
     }
     
-    Imagine that these options will be shown as buttons, and adjust the copy of the options accordingly. You must be as concise as possible when asking questions, only showing the question and its options.
+    Imagine that these options will be shown as buttons, and adjust the copy of the options accordingly. You must be as concise as possible when asking questions, only showing the question and its options. Never give an "other" option, and never ask me to elaborate or expand on my answers.
     
     To ensure the recommendations take your answers into account as much as possible, you should use a ranking system to weigh the importance of each answer. Assign a score to each answer and calculate the overall relevance of a movie based on the scores of the selected answers.
 

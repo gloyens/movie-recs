@@ -11,6 +11,7 @@
   "dependencies": {
     "@next/font": "^13.4.2",
     "@phntms/css-components": "^0.4.0",
+    "@phntms/use-local-state": "^0.1.4",
     "@types/node": "20.1.2",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",

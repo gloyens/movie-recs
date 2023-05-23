@@ -64,11 +64,18 @@ export default function Responses() {
   try {
     messageObject = JSON.parse(lastMessage.match(/{.*}/ims)![0]);
   } catch (error) {
-    // console.error(error);
-    messageObject = {
-      question: "Loading...",
-      answers: [],
-    };
+    if (lastMessage == undefined) {
+      messageObject = {
+        question: "Loading...",
+        answers: [],
+      };
+    } else {
+      console.error(error);
+      messageObject = {
+        question: "Something went wrong!",
+        answers: [],
+      };
+    }
   }
 
   return (

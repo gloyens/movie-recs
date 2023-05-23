@@ -37,6 +37,12 @@ export default function Questions({ messageObject, isLoading, number }: Props) {
     setAnswers([...answers, answer]);
   };
 
+  const filteredAnswers = messageObject["answers"].filter(
+    (answer) =>
+      answer.toLowerCase() !== "other" &&
+      answer.toLowerCase() !== "something else"
+  );
+
   return (
     <QuestionsWrapper>
       <Answers />
@@ -45,7 +51,7 @@ export default function Questions({ messageObject, isLoading, number }: Props) {
         {messageObject["question"]}
       </h2>
       <AnswersWrapper>
-        {messageObject["answers"].map((answer: string) => (
+        {filteredAnswers.map((answer: string) => (
           <AnswerWrapper key={uuid()}>
             <Answer onClick={() => handleClick(answer)} disabled={isLoading}>
               {answer}
